@@ -1,3 +1,10 @@
+### CONSTANTES
+
+CADASTRAR_RECEITA = 1
+VISUALIZAR_RECEITAS = 2
+BUSCAR_RECEITAS = 3
+SAIR = 4
+
 ### MÉTODOS
 
 def bem_vindo()
@@ -7,9 +14,10 @@ end
 def menu()
 	puts "=== MENU ==="
 	puts 
-	puts "[1] digite para para cadastrar uma receita "
-	puts "[2] digite para ver todas as receitas3 "
-	puts "[3] digite para sair"
+	puts "[#{CADASTRAR_RECEITA}] digite para para cadastrar uma receita "
+	puts "[#{VISUALIZAR_RECEITAS}] digite para ver todas as receitas "
+	puts "[#{BUSCAR_RECEITAS}] pesquise uma receita"
+	puts "[#{SAIR}] digite para sair"
 
 	print "digite uma opção:"
 	gets.to_i()
@@ -28,6 +36,10 @@ def cadastrar_receita()
 end
 
 def listar_receitas(lista)
+	if lista.empty?
+		puts 'Nenhuma receita foi cadastrada'
+	end
+
 	puts 
 	puts "=== Minhas Receitas ==="
 	puts 
@@ -47,13 +59,13 @@ receitas = []
 
 opcao = menu()
 
-while (opcao != 3) do
-	if(opcao == 1)
+while (opcao != SAIR) do
+	if(opcao == CADASTRAR_RECEITA)
 		receita_hash = cadastrar_receita()
 
 		receitas << receita_hash
 
-	elsif(opcao == 2)
+	elsif(opcao == VISUALIZAR_RECEITAS)
 		listar_receitas(receitas)
 		
 	else 
